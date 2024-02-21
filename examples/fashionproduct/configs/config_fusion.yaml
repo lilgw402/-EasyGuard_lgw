@@ -1,0 +1,14 @@
+hidden_size: 512
+num_layers: 3
+embd_pdrop: 0.1
+category_logits_level1: 127
+category_logits_level2: 1663
+init_tau: 0.07
+tau_clamp: 4.6051
+ner_task_dict: hdfs://haruna/home/byte_ecom_govern/user/liuyuhang/pretrain/ner_format_statistics/ner_task_dict.json
+ner_tasks: 
+- 商品
+- 颜色
+- 风格
+- 材质
+- 样式

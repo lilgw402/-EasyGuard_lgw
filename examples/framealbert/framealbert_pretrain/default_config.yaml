@@ -1,0 +1,106 @@
+trainer:
+  default_root_dir: null
+  default_hdfs_dir: hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fa_pretrain/v1.1
+  logger: true
+  log_every_n_steps: 100
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: false
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: { }
+  precision: 16
+  max_epochs: 5
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: 10
+  limit_test_batches: null
+  sync_batchnorm: false
+  sync_fit_metrics: null
+  val_check_interval: [ 10000, 1.0 ]
+  accumulate_grad_batches: null
+  gradient_clip_val: null
+  seed: null
+  summarize_model_depth: 2
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: 20
+  checkpoint_monitor: val_loss
+  checkpoint_mode: min
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: null
+  experiment_name: null
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+  strategy: ddp
+  enable_qat: false
+  qat_kwargs: { }
+  optimizer_kwargs:
+    optimizer:
+      type: torch.optim.AdamW
+      params:
+        lr: 0.0001
+        betas:
+          - 0.9
+          - 0.999
+        eps: 1.0e-06
+        weight_decay: 0.01
+        correct_bias: true
+        correct_bias_eps: false
+        bias_correction: true
+        adam_w_mode: true
+        amsgrad: false
+        set_grad_none: true
+        momentum: 0.0
+        nesterov: false
+    scheduler:
+      type: torch.optim.lr_scheduler.LinearLR
+      total_steps_param_name: total_iters
+      warmup_steps_param_name: num_warmup_steps
+      params:
+        warmup_step_rate: 0.005
+        start_factor: 0.3333333333333333
+        end_factor: 1.0
+        num_cycles: 0.5
+        lr_end: 1.0e-07
+        power: 1.0
+  grad_norm_layers: [ ]
+model:
+  backbone: ./examples/framealbert/framealbert_pretrain/config_backbone/config_backbone.yaml
+  class_num: 2
+  hidden_dim: 768
+  optim: AdamW
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  lr_schedule: linear
+  warmup_steps_factor: 1.
+  low_lr_prefix: # []
+    - backbone.visual
+  freeze_prefix: [ ]
+  load_pretrained: hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fa_pretrain/v1/checkpoints/epoch=4-step=260415_success.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/weights/backbone/mixed_fashionswin.th
+  # hdfs://harunava/home/byte_magellan_va/user/liutingting.kiwi/ckpt/FrameALBERT_v2_2/model_state_epoch_150000.th
+  # hdfs://harunava/home/byte_magellan_va/user/liutingting.kiwi/ckpt/FrameALBERT_v4_1/model_state_epoch_20000.th
+  prefix_changes: [ ]
+  #    - falbert.->backbone.
+  download_files: [ ]
+  vocab_size: 280001
+data:
+  frame_root: /mnt/bn/ecom-lxy/zhuhe/dataset/video_frame
+  train_files: hdfs://harunava/home/byte_magellan_va/user/liutingting.kiwi/data/pretrain/raw_clean_v3/train/
+  train_size: 10000000
+  val_files: hdfs://harunava/home/byte_magellan_va/user/liutingting.kiwi/data/pretrain/raw_clean_v3/val
+  val_size: 2250000
+  train_batch_size: 4
+  val_batch_size: 4
+  num_workers: 2
+  vocab_size: 280001
+  text_len: 256
+  frame_len: 8
+  exp: default
+  download_files: [ ]
+log_level: INFO

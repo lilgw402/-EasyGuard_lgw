@@ -1,0 +1,105 @@
+trainer:
+  default_root_dir: null
+  default_hdfs_dir: hdfs://haruna/home/byte_ecom_govern/user/wangxian/projects/fashionaudio/fashoin_sv
+  logger: true
+  log_every_n_steps: 50
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: true
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: { }
+  precision: 16
+  max_epochs: 15
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: 4
+  limit_test_batches: null
+  sync_batchnorm: false
+  sync_fit_metrics: null
+  val_check_interval: [ 500, 1.0 ]
+  accumulate_grad_batches: null
+  gradient_clip_val: null
+  seed: 42
+  summarize_model_depth: 2
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: 20
+  checkpoint_monitor: step
+  checkpoint_mode: max
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: null
+  experiment_name: null
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+  strategy: ddp
+  enable_qat: false
+  qat_kwargs: { }
+  optimizer_kwargs:
+    optimizer:
+      type: torch.optim.AdamW
+      params:
+        lr: 0.0001
+        betas:
+          - 0.9
+          - 0.999
+        eps: 1.0e-06
+        weight_decay: 0.01
+        correct_bias: true
+        correct_bias_eps: false
+        bias_correction: true
+        adam_w_mode: true
+        amsgrad: false
+        set_grad_none: true
+        momentum: 0.0
+        nesterov: false
+    scheduler:
+      type: cruise.optim.constant_lr
+      total_steps_param_name: total_iters
+      warmup_steps_param_name: warmup_iters
+      interval: epoch
+      params:
+        warmup_step_rate: 0.0
+        start_factor: 0.3333333333333333
+        end_factor: 1.0e-07
+        num_cycles: 0.5
+        lr_end: 1.0e-07
+        power: 1.0
+  grad_norm_layers: [ ]
+model:
+  mode: aam
+  class_num: 31227
+  hidden_dim: 192
+  channel: 1024
+  m: 0.2
+  s: 30
+  optim: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.01
+  lr_schedule: cosine
+  warmup_steps_factor: 0.5
+  low_lr_prefix: [ ]
+  #    - 'speaker_encoder.'
+  freeze_prefix: [ ]
+  load_pretrained: 'hdfs://haruna/home/byte_ecom_govern/user/wangxian/weights/pretrained/pretrain_sv.th'
+  prefix_changes:
+    - 'speaker_loss.->abandon_loss.'
+  download_files: [ ]
+data:
+  root_path: /mnt/bn/wxnas/audio4sv/
+  train_files: hdfs://haruna/home/byte_ecom_govern/user/wangxian/datasets/fashionaudio/fashion_sv/train_jsonl_0409
+  train_size: 3153920
+  val_files: hdfs://haruna/home/byte_ecom_govern/user/wangxian/datasets/fashionaudio/fashion_sv/train_jsonl_0409
+  val_size: 26000
+  train_batch_size: 360
+  val_batch_size: 64
+  num_frames: 500
+  sampling_rate: 16000
+  num_workers: 4
+  exp: default
+  download_files: [ ]
+log_level: INFO

@@ -1,0 +1,62 @@
+trainer:
+  default_root_dir: /mnt/bn/ecom-govern-maxiangqian/liuzeyu/hq_live/model/v1_train12w_text_baseline_1108
+  default_hdfs_dir: null
+  logger: true
+  log_every_n_steps: 50
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: false
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: {}
+  precision: fp16
+  max_epochs: 30
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  sync_batchnorm: true
+  sync_fit_metrics: null
+  val_check_interval: 1.0
+  accumulate_grad_batches: null
+  gradient_clip_val: 2.0
+  seed: null
+  summarize_model_depth: 3
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: true
+  checkpoint_monitor: loss
+  checkpoint_mode: min
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: hq_live
+  experiment_name: baseline_12w_text_1108
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+model:
+  config_text: /mnt/bn/ecom-govern-maxiangqian/liuzeyu/hq_live/config/config_text.yaml
+  config_visual: /mnt/bn/ecom-govern-maxiangqian/liuzeyu/hq_live/config/config_visual.yaml
+  config_fusion: /mnt/bn/ecom-govern-maxiangqian/liuzeyu/hq_live/config/config_fusion.yaml
+  learning_rate: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  weight_decay: 0.02
+#  load_pretrained: hdfs://haruna/home/byte_ecom_govern/user/liuyuhang/pretrain/fashion_bert_v2/model_state_epoch_83332.th
+  use_text_modal: true
+  use_visual_modal: false
+  use_multilabel: false
+data:
+  train_files: /mnt/bn/ecom-govern-maxiangqian/liuzeyu/hq_live/packed_data/20221001_20221102/v1_0/train_12w_train
+#  train_files: /mnt/bn/ecom-govern-maxiangqian/liuzeyu/authentic/packed_data/20221011_20221012/v1_debug/test
+  val_files: /mnt/bn/ecom-govern-maxiangqian/liuzeyu/hq_live/packed_data/20221001_20221102/v1_0/train_12w_val
+  train_batch_size: 16
+  val_batch_size: 8
+  num_workers: 16
+  max_len: 512
+
+log_level: INFO

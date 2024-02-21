@@ -1,0 +1,18 @@
+### swin
+name: swin
+img_size: 224
+output_dim: 512
+embed_dim: 128
+depths: [2, 2, 18, 2]
+num_heads: [4, 8, 16, 32]
+pooling_type: netvlad
+num_frames: 4
+
+### convnext
+# name: convnext
+# depths: [3, 3, 27, 3]
+# dims: [128, 256, 512, 1024]
+# pretrained: /mnt/bn/ecom-govern-maxiangqian/qingxuan/EasyGuard/easyguard/appzoo/authentic_modeling/convnext_base_22k_1k_224.pth
+# pooling_type: null
+# output_dim: 1024
+# num_frames: 4

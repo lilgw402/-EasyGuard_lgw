@@ -1,0 +1,176 @@
+# all model config settings, each required setting for your model can be exposed here
+
+# the unique keys are designed for mappings
+unique_keys:
+  - name
+  - backend
+  - config_archive
+  - config
+  - text_config
+  - vision_config
+  - tokenizer
+  - tokenizer_fast
+  - image_processor
+  - processor
+  - model
+  - sequence_model
+
+
+# all models' settings
+models:
+  bert:
+    name: BERT
+    backend: hf
+    config_archive: BERT_PRETRAINED_CONFIG_ARCHIVE_MAP
+    configuration_bert:
+      config: BertConfig
+    tokenization_bert:
+      tokenizer: BertTokenizer
+    tokenization_bert_fast:
+      tokenizer_fast: BertTokenizerFast
+    modeling_bert:
+      model: BertModel
+      model_for_pretrained: BertForPreTraining
+  bart:
+    name: BART
+    backend: hf
+    config_archive: BART_PRETRAINED_CONFIG_ARCHIVE_MAP
+    configuration_bart:
+      config: BartConfig
+    modeling_bart:
+      model: BartModel
+    tokenization_bart:
+      tokenizer: BartTokenizer
+    tokenization_bart_fast:
+      tokenizer_fast: BartTokenizerFast
+  deberta:
+    name: DeBERTa
+    backend: default
+    configuration_deberta:
+      config: DeBERTaConfig
+    modeling_deberta:
+      model: DebertaModel
+    tokenization_deberta:
+      tokenizer: DeBERTaTokenizer
+  fashionxlm:
+    name: Fashionxlm
+    backend: hf
+    configuration_fashionxlm:
+      config: FashionxlmConfig
+    modeling_fashionxlm:
+      model: FashionxlmForMaskedLM
+      sequence_model: FashionxlmForSequenceClassification
+    tokenization_fashionxlm:
+      tokenizer: FashionxlmTokenizer
+  fashionxlm_moe:
+    name: FashionXLM_MoE
+    backend: hf
+    configuration_fashionxlm_moe:
+      config: FashionxlmMoEConfig
+    modeling_fashionxlm_moe:
+      model: FashionxlmMoEForMaskedLMMoE
+      soft_model: FashionxlmSoftMoEForMaskedLMMoE
+      sequence_model: FashionxlmMoEForSequencelCassificationMoE
+    tokenization_fashionxlm_moe:
+      tokenizer: FashionxlmMoETokenizer
+  xlmr:
+    name: XLMR
+    backend: hf
+    configuration_xlm_roberta:
+      config: XLMRobertaConfig
+    modeling_xlm_roberta:
+      model: XLMRobertaForMaskedLM
+      sequence_model: XLMRobertaForSequenceClassification
+    tokenization_xlm_roberta:
+      tokenizer: XLMRobertaTokenizer
+  vit:
+    name: ViT
+    backend: hf
+    configuration_vit:
+      config: ViTConfig
+    image_processing_vit:
+      image_processor: ViTImageProcessor
+    modeling_vit:
+      model: ViTModel
+  clip:
+    name: CLIP
+    backend: hf
+    configuration_clip:
+      config: CLIPConfig
+      text_config: CLIPTextConfig
+      vision_config: CLIPVisionConfig
+    image_processing_clip:
+      image_processor: CLIPImageProcessor
+    modeling_clip:
+      model: CLIPModel
+    processing_clip:
+      processor: CLIPProcessor
+    tokenization_clip:
+      tokenizer: CLIPTokenizer
+  fashion_swin:
+    name: FashionSwin
+    backend: default
+    configuration_fashion_swin:
+      config: FashionSwinConfig
+    image_processing_fashion_swin:
+      image_processor: FashionSwinProcessor
+    modeling_fashion_swin:
+      model: FashionSwinModel
+  fashion_universal:
+    name: FashionUniversal
+    backend: default
+    configuration_fashion_universal:
+      config: FashionUniversalConfig
+    image_processing_fashion_universal:
+      image_processor: FashionUniversalProcessor
+    modeling_fashion_universal:
+      model: FashionUniversalModel
+  deberta_erlangshen:
+    name: DeBERTaErlangshen
+    backend: hf
+    configuration_deberta_v2:
+      config: DebertaV2Config
+    modeling_deberta_v2:
+      model: DebertaV2ForMaskedLM
+    tokenization_deberta_v2:
+      tokenizer: DebertaV2Tokenizer
+  falbert:
+    name: FalBert
+    backend: default
+    configuration_falbert:
+      config: FalBertConfig
+    image_processing_falbert:
+      image_processor: FalBertImageProcessor
+    modeling_falbert:
+      model: FalBertModel
+    processing_falbert:
+      processor: FalBertProcessor
+    tokenization_falbert:
+      tokenizer: FalBertTokenizer
+  fashionbert:
+    name: FashionBert
+    backend: default
+    modeling_fashionbert: 
+      model: FashionBert
+  fashionvtp:
+    name: FashionVTP
+    backend: default
+    modeling_fashionvtp: 
+      model: FashionVTP
+  fashionproduct:
+    name: FashionProduct
+    backend: default
+    modeling_fashionproduct:
+      model: FashionProduct
+  fashionproduct_xl:
+    name: FashionProductXL
+    backend: default
+    modeling_fashionproduct_xl:
+      model: FashionProductXL
+  eva_vit_giant:
+    name: EvaVitGiant
+    backend: default
+#    image_processing_eva_giant_vit:
+#      image_processor: EvaVitGiantProcessor
+    modeling_eva_vit_giant:
+      model: EvaVitGiant

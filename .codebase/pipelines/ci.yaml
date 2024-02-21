@@ -1,0 +1,39 @@
+# for detail, refer to:
+# https://bytedance.feishu.cn/wiki/wikcn0XxotllYX3nzz7AEv1h07d#
+name: EasyGuard CI Pipeline         # 用于展示的名称
+trigger:                            # 触发器，设置触发的条件
+  change:                           # 设置change参数，以启用MR触发
+    types:                          # 限定MR动作类型
+    - create                          # 创建MR
+    - submit                          # 合入MR
+    - push                            # 源分支代码变更
+    branches: [master]              # 当前仅支持目标分支为master分支的时候才出发pipeline
+# Pipeline是由若干个Job组成的，每个Job在独立的环境中运行（Docker镜像）
+# Job和Job之间默认并行
+jobs:
+  codestyle-check-and-tests:        # job的ID       
+    name: codestyle_check_and_tests
+    image: hub.byted.org/base/data.cruise:0.6.0-th2.1
+    working-directory: fex
+    # JOB的执行内容由若干个step组成，每个step独立串行执行
+    steps:
+      - uses: actions/checkout
+        inputs:
+          depth: 1
+      - uses: actions/setup-proxy  # 设置全局代理 https://bytedance.feishu.cn/wiki/wikcnuNhxcArGLry5F7g1buOiib#45rFnA
+      - name: Print basic info
+        commands:
+          - python3 -V
+          - whoami
+          - pwd
+          - ls
+          - date
+      - name: Prepare CI Env
+        commands:
+          - bash -ex dev/prepare_ci_env.sh
+      - name: Code Check
+        commands:
+          - bash -ex dev/code_style_check.sh 
+      - name: Test Pipeline
+        commands:
+          - bash -ex dev/ci_test.sh

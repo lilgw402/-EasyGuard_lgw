@@ -1,0 +1,102 @@
+trainer:
+  default_root_dir: null
+  default_hdfs_dir: null  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0703_tv_sepcls
+  logger: true
+  log_every_n_steps: 100
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: false
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: { }
+  precision: 16
+  max_epochs: 2
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  sync_batchnorm: false
+  sync_fit_metrics: null
+  val_check_interval: [ 2000, 1.0 ]
+  accumulate_grad_batches: null
+  gradient_clip_val: null
+  seed: null
+  summarize_model_depth: 2
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: 5
+  checkpoint_monitor: val_loss
+  checkpoint_mode: min
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: null
+  experiment_name: null
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+  strategy: ddp
+  enable_qat: false
+  qat_kwargs: { }
+  grad_norm_layers: [ ]
+model:
+#  backbone: /mnt/bn/fashionproductxl/weights/fashionbert_base_local
+  class_num: 1900
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  lr_schedule: linear
+  warmup_steps_factor: 0.2
+  eps: 1.0e-08
+  hidden_dim: 768
+  head_num: 5
+  use_multihead: true
+  embd_pdrop: 0.1
+  optim: AdamW
+  low_lr_prefix: [ ]
+  #    - model.text
+  #    - model.visual
+  freeze_prefix: # []
+    - text.
+    - visual.
+  load_pretrained: hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0709_ft_tts_mh/version_2987023/checkpoints/epoch=0-step=6347_success.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0709_ft_tts_mh/version_2986055/checkpoints/epoch=1-step=25390_success.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0708_ft_tts/version_2984220/checkpoints/epoch=1-step=39062_success.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0705_finetune/version_2968114/checkpoints/epoch=2-step=138000-val_loss=2.840.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0705_finetune/version_2968114/checkpoints/epoch=1-step=80000-val_loss=2.907.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0703_tv_sepcls_lowlr/version_2959258/checkpoints/epoch=1-step=62000-val_loss=2.286.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0703_tv_sepfzcls/version_2959173/checkpoints/epoch=1-step=33984_success.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0701_aam/version_2949705/checkpoints/epoch=3-step=90624_success.ckpt
+  prefix_changes: [ ]
+  download_files: [ ]
+data:
+  train_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_samples/
+  train_size: 17400000
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_test_samples/
+  # val_size: 200000
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_test_jsonl/GB*
+  # val_size: 83331
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_test_jsonl/TH*
+  # val_size: 43792
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_test_jsonl/ID*
+  # val_size: 40596
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_test_jsonl/VN*
+  # val_size: 39824
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_test_jsonl/MY*
+  # val_size: 43926
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_samples/ID-country-part-00000.jsonl
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_hrtest_jsonl/GB*
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_hrtest_jsonl/TH*
+  val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_hrtest_jsonl/ID*
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_hrtest_jsonl/VN*
+  # val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_hrtest_jsonl/MY*
+  val_size: 10000
+  train_batch_size: 64
+  val_batch_size: 64
+  num_workers: 4
+  text_len: 256
+  frame_len: 5
+  head_num: 5
+  exp: freeze_finetune
+  download_files: [ ]
+log_level: INFO

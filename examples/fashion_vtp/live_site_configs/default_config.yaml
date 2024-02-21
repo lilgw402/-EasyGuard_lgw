@@ -1,0 +1,93 @@
+trainer:
+  default_root_dir: /mnt/bn/multimodel-pretrain/scripts/easyguard_train/live_site
+  default_hdfs_dir: null
+  logger: true
+  log_every_n_steps: 100
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: true
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: {}
+  precision: 16
+  max_epochs: 30
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  sync_batchnorm: true
+  sync_fit_metrics: null
+  val_check_interval:
+  - 1000
+  - 1.0
+  accumulate_grad_batches: null
+  gradient_clip_val: null
+  seed: null
+  summarize_model_depth: 5
+  resume_ckpt_path: null
+  resume_loader_state: false
+  callbacks: null
+  enable_checkpoint: 60
+  checkpoint_monitor: val_acc2
+  checkpoint_mode: max
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: null
+  experiment_name: fashionvtp-base-c-transform-beta
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+  strategy: ddp
+  enable_qat: false
+  qat_kwargs: {}
+  optimizer_kwargs:
+    optimizer:
+      type: torch.optim.AdamW
+      params:
+        lr: 0.0001
+        betas:
+        - 0.9
+        - 0.999
+        eps: 1.0e-06
+        weight_decay: 0.01
+        correct_bias: true
+        correct_bias_eps: false
+        bias_correction: true
+        adam_w_mode: true
+        amsgrad: false
+        set_grad_none: true
+        momentum: 0.0
+        nesterov: false
+    scheduler:
+      type: cruise.optim.constant_lr
+      total_steps_param_name: total_iters
+      warmup_steps_param_name: warmup_iters
+      interval: epoch_end
+      params:
+        warmup_step_rate: 0.0
+        start_factor: 0.3333333333333333
+        end_factor: 1.0e-07
+        num_cycles: 0.5
+        lr_end: 1.0e-07
+        power: 1.0
+  grad_norm_layers: []
+model:
+  config_optim: ./examples/fashion_vtp/live_site_configs/config_optim.yaml
+data:
+  train_path: /mnt/bn/suyulin/benchmark/live_site_label_data/site_new_2/train_metas.json
+  val_path: /mnt/bn/suyulin/benchmark/live_site_label_data/site_new_2/val_metas.json
+  frame_root: /mnt/bn/suyulin/benchmark/live_site_label_data/site_new_2/local_frames
+  vocab_file: hdfs://haruna/home/byte_search_nlp_lq/multimodal/modelhub/albert_6l_zh_mix_oldcut_20200921/archer/zh_old_cut_145607.vocab
+  train_batch_size: 8
+  val_batch_size: 8
+  num_workers: 8
+  val_step: -1
+  ocr_max_len: 40
+  asr_max_len: 360
+  title_max_len: 30
+  frame_len: 12
+  num_classes_lv1: 4
+  num_classes_lv2: 16
+log_level: INFO

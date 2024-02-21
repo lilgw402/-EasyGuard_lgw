@@ -1,0 +1,139 @@
+name: "EcomLiveGandalfAutoDisNNAsrModel"
+input: "features"
+input: "input_ids"
+input: "attention_mask"
+input: "token_type_ids"
+output: "prob"
+
+inference_thread_num: 8
+
+engine_param {
+  name: "torch_engine"
+  input {
+    name: "features"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 137
+      }
+    }
+    type: FP32
+  }
+  output {
+    name: "auto_dis_input"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 137
+      }
+      cdim {
+        value: 3
+      }
+    }
+    type: FP32
+  }
+  output {
+    name: "feature_dense"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 137
+      }
+    }
+    type: FP32
+  }
+  batch_size: 8
+  engine_type: PYTORCH
+  deploy: "preprocess/auto_dis_preprocess.jit"
+  data_type: FP32
+}
+
+engine_param {
+  name: "torch_engine"
+  input {
+    name: "auto_dis_input"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 137
+      }
+      cdim {
+        value: 3
+      }
+    }
+    type: FP32
+  }
+  input {
+    name: "feature_dense"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 137
+      }
+    }
+    type: FP32
+  }
+  input {
+    name: "input_ids"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 512
+      }
+    }
+    type: INT32
+  }
+  input {
+    name: "attention_mask"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 512
+      }
+    }
+    type: INT32
+  }
+  input {
+    name: "token_type_ids"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 512
+      }
+    }
+    type: INT32
+  }
+  output {
+    name: "prob"
+    shape {
+      cdim {
+        value: -1
+      }
+      cdim {
+        value: 1
+      }
+    }
+    type: FP32
+  }
+  batch_size: 8
+  engine_type: PYTORCH
+  deploy: "traced_model.pt"
+  data_type: FP32
+}
+

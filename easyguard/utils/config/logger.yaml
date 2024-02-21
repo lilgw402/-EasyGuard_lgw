@@ -1,0 +1,54 @@
+version: 1
+disable_existing_loggers: False
+
+formatters:
+  standard:
+    format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  error:
+    format: "%(levelname)s <PID %(process)d:%(processName)s> %(name)s.%(funcName)s(): %(message)s"
+  file:
+    format: "%(asctime)s - %(filename)s - %(name)s - %(levelname)s - %(message)s"
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: standard
+    stream: ext://sys.stdout
+
+  info_file_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: INFO
+    formatter: file
+    filename: /tmp/easyguard_info.log
+    maxBytes: 10485760 # 10MB
+    backupCount: 5
+    encoding: utf8
+
+  warning_file_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: WARNING
+    formatter: file
+    filename: /tmp/easyguard_warning.log
+    maxBytes: 10485760 # 10MB
+    backupCount: 2
+    encoding: utf8
+
+  error_file_handler:
+    class: logging.handlers.RotatingFileHandler
+    level: ERROR
+    formatter: error
+    filename: /tmp/easyguard_errors.log
+    maxBytes: 10485760 # 10MB
+    backupCount: 2
+    encoding: utf8
+
+loggers:
+  common:
+    level: INFO
+    handlers: [console]
+    # just output one time 
+    propagate: False
+root:
+  level: NOTSET
+  handlers: [console, info_file_handler, warning_file_handler, error_file_handler]
+  propagate: false

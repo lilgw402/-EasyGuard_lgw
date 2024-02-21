@@ -1,0 +1,107 @@
+trainer:
+  default_root_dir: null
+  default_hdfs_dir: hdfs://haruna/home/byte_ecom_govern/easyguard/logs/test
+  logger: true
+  log_every_n_steps: 50
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: true
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: {}
+  precision: fp16
+  max_epochs: 1
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: 100
+  limit_test_batches: null
+  sync_batchnorm: true
+  sync_fit_metrics: null
+  val_check_interval: 1.0
+  accumulate_grad_batches: null
+  gradient_clip_val: 2.0
+  seed: null
+  summarize_model_depth: 2
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: true
+  checkpoint_monitor: loss
+  checkpoint_mode: min
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: null
+  experiment_name: null
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+  strategy: ddp
+  enable_qat: false
+  qat_kwargs: {}
+  optimizer_kwargs:
+    optimizer:
+      type: torch.optim.AdamW
+      params:
+        lr: 0.0001
+        betas:
+        - 0.9
+        - 0.999
+        eps: 1.0e-06
+        weight_decay: 0.01
+        correct_bias: true
+        correct_bias_eps: false
+        bias_correction: true
+        adam_w_mode: true
+        amsgrad: false
+        set_grad_none: true
+        momentum: 0.0
+        nesterov: false
+    scheduler:
+      type: torch.optim.lr_scheduler.LinearLR
+      total_steps_param_name: total_iters
+      warmup_steps_param_name: num_warmup_steps
+      params:
+        warmup_step_rate: 0.005
+        start_factor: 0.3333333333333333
+        end_factor: 1.0
+        num_cycles: 0.5
+        lr_end: 1.0e-07
+        power: 1.0
+  grad_norm_layers: []
+model:
+  pretrained_model_name_or_path: fashionxlm-moe-base
+  classification_task_enable: false
+  classification_task_head: 2
+  hidden_size: 768
+  load_pretrain: null
+  all_gather_limit: -1
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  base_lr: 0.00001
+  warmup_lr: 5.0e-07
+  min_lr: 5.0e-06
+  lr_scheduler: cosine
+  lr_scheduler_decay_ratio: 0.8
+  lr_scheduler_decay_rate: 0.1
+  optimizer: adamw
+  optimizer_eps: 1.0e-08
+  optimizer_betas:
+  - 0.9
+  - 0.999
+  momentum: 0.9
+data:
+  train_batch_size: 64
+  val_batch_size: 64
+  train_file: hdfs://harunava/home/byte_magellan_va/user/jiangjunjun.happy/xtreme_ecom/ansa_train.json
+  val_file: hdfs://harunava/home/byte_magellan_va/user/jiangjunjun.happy/xtreme_ecom/leaderboard/ansa_test.json
+  data_size: 16220
+  val_step: 10
+  num_workers: 1
+  tokenizer: fashionxlm-moe-base
+  x_key: text
+  y_key: label
+  region_key: country
+  pre_tokenize: false
+  max_len: 128
+log_level: INFO

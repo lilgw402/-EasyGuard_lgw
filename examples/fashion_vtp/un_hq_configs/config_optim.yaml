@@ -1,0 +1,18 @@
+class_num: 3
+
+freeze_prefix: []
+
+weight_decay: 0.01
+lr_scheduler: cosine #cosine, linear, step
+base_lr: 4.0e-5
+warmup_lr: 0.0
+min_lr: 0.0
+# warmup_lr: 1.0e-8
+# min_lr: 1.0e-8
+warmup_epochs: 5
+lr_scheduler_decay_epochs: 30
+lr_scheduler_decay_rate: 0.1
+
+optimizer: adamw
+optimizer_eps: 1.0e-8
+momentum: 0.9

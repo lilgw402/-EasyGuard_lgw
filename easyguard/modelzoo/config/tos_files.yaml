@@ -1,0 +1,245 @@
+bert_base_uncased:
+- key: bert_base_uncased/config.json
+  lastModified: Mon, 17 Apr 2023 13:35:36 GMT
+  size: 570
+- key: bert_base_uncased/pytorch_model.bin
+  lastModified: Mon, 17 Apr 2023 13:35:38 GMT
+  size: 440473133
+- key: bert_base_uncased/tokenizer_config.json
+  lastModified: Mon, 17 Apr 2023 13:35:46 GMT
+  size: 28
+- key: bert_base_uncased/vocab.txt
+  lastModified: Mon, 17 Apr 2023 13:35:46 GMT
+  size: 231508
+deberta_base_6l:
+- key: deberta_base_6l/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:35:47 GMT
+  size: 751
+- key: deberta_base_6l/pytorch_model.pt
+  lastModified: Mon, 17 Apr 2023 13:35:49 GMT
+  size: 505938268
+- key: deberta_base_6l/pytorch_model_backup.ckpt
+  lastModified: Mon, 17 Apr 2023 13:36:04 GMT
+  size: 1431050137
+- key: deberta_base_6l/tokenizer_config.yaml
+  lastModified: Mon, 17 Apr 2023 13:36:26 GMT
+  size: 60
+- key: deberta_base_6l/vocab.txt
+  lastModified: Mon, 17 Apr 2023 13:36:26 GMT
+  size: 889713
+- key: deberta_base_6l/vocab_backup.txt
+  lastModified: Mon, 17 Apr 2023 13:36:26 GMT
+  size: 889713
+falbert_no_weights:
+- key: falbert_no_weights/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:36:26 GMT
+  size: 565
+- key: falbert_no_weights/processor_config.yaml
+  lastModified: Mon, 17 Apr 2023 13:36:26 GMT
+  size: 320
+- key: falbert_no_weights/vocab.txt
+  lastModified: Mon, 17 Apr 2023 13:36:26 GMT
+  size: 939584
+fashion_deberta:
+- key: fashion_deberta/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:36:27 GMT
+  size: 750
+- key: fashion_deberta/pytorch_model.ckpt
+  lastModified: Mon, 17 Apr 2023 13:36:36 GMT
+  size: 2325661147
+- key: fashion_deberta/tokenizer_config.yaml
+  lastModified: Mon, 17 Apr 2023 13:37:16 GMT
+  size: 60
+- key: fashion_deberta/vocab.txt
+  lastModified: Mon, 17 Apr 2023 13:37:16 GMT
+  size: 889713
+fashion_deberta_asr:
+- key: fashion_deberta_asr/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:37:16 GMT
+  size: 754
+- key: fashion_deberta_asr/pytorch_model.ckpt
+  lastModified: Mon, 17 Apr 2023 13:37:26 GMT
+  size: 2344588211
+- key: fashion_deberta_asr/tokenizer_config.yaml
+  lastModified: Mon, 17 Apr 2023 13:37:53 GMT
+  size: 60
+- key: fashion_deberta_asr/vocab.txt
+  lastModified: Mon, 17 Apr 2023 13:37:53 GMT
+  size: 889713
+fashion_deberta_asr_small:
+- key: fashion_deberta_asr_small/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:37:54 GMT
+  size: 755
+- key: fashion_deberta_asr_small/pytorch_model.ckpt
+  lastModified: Mon, 17 Apr 2023 13:38:02 GMT
+  size: 2075190251
+- key: fashion_deberta_asr_small/tokenizer_config.yaml
+  lastModified: Mon, 17 Apr 2023 13:38:34 GMT
+  size: 60
+- key: fashion_deberta_asr_small/vocab.txt
+  lastModified: Mon, 17 Apr 2023 13:38:34 GMT
+  size: 889713
+fashion_deberta_ccr_order:
+- key: fashion_deberta_ccr_order/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:38:34 GMT
+  size: 760
+- key: fashion_deberta_ccr_order/pytorch_model.ckpt
+  lastModified: Mon, 17 Apr 2023 13:38:44 GMT
+  size: 2358796447
+- key: fashion_deberta_ccr_order/tokenizer_config.yaml
+  lastModified: Mon, 17 Apr 2023 13:39:09 GMT
+  size: 60
+- key: fashion_deberta_ccr_order/vocab.txt
+  lastModified: Mon, 17 Apr 2023 13:39:09 GMT
+  size: 889713
+fashion_deberta_ner:
+- key: fashion_deberta_ner/README.md
+  lastModified: Mon, 17 Apr 2023 13:39:09 GMT
+  size: 4721
+- key: fashion_deberta_ner/config.json
+  lastModified: Mon, 17 Apr 2023 13:39:10 GMT
+  size: 738
+- key: fashion_deberta_ner/pytorch_model.ckpt
+  lastModified: Mon, 17 Apr 2023 13:39:15 GMT
+  size: 1294878089
+- key: fashion_deberta_ner/special_tokens_map.json
+  lastModified: Mon, 17 Apr 2023 13:39:31 GMT
+  size: 112
+- key: fashion_deberta_ner/tokenizer_config.json
+  lastModified: Mon, 17 Apr 2023 13:39:31 GMT
+  size: 357
+- key: fashion_deberta_ner/vocab.txt
+  lastModified: Mon, 17 Apr 2023 13:39:31 GMT
+  size: 53098
+fashion_swin_base_224_fashionvtp:
+- key: fashion_swin_base_224_fashionvtp/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:39:32 GMT
+  size: 337
+- key: fashion_swin_base_224_fashionvtp/preprocessor_config.yaml
+  lastModified: Mon, 17 Apr 2023 13:39:32 GMT
+  size: 76
+- key: fashion_swin_base_224_fashionvtp/pytorch_model.pth
+  lastModified: Mon, 17 Apr 2023 13:39:33 GMT
+  size: 350758505
+fashion_universal_product_vit_base_224:
+- key: fashion_universal_product_vit_base_224/config.yaml
+  lastModified: Tue, 23 May 2023 03:41:09 GMT
+  size: 235
+- key: fashion_universal_product_vit_base_224/preprocessor_config.yaml
+  lastModified: Tue, 23 May 2023 03:41:09 GMT
+  size: 105
+- key: fashion_universal_product_vit_base_224/pytorch_model.pth
+  lastModified: Tue, 23 May 2023 03:41:17 GMT
+  size: 807927191
+fashion_universal_vit_base_224:
+- key: fashion_universal_vit_base_224/config.yaml
+  lastModified: Tue, 23 May 2023 03:31:13 GMT
+  size: 227
+- key: fashion_universal_vit_base_224/preprocessor_config.yaml
+  lastModified: Tue, 23 May 2023 03:31:13 GMT
+  size: 105
+- key: fashion_universal_vit_base_224/pytorch_model.pth
+  lastModified: Tue, 23 May 2023 03:31:15 GMT
+  size: 807927191
+fashionbert_base:
+- key: fashionbert_base/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:39:37 GMT
+  size: 716
+- key: fashionbert_base/pytorch_model.th
+  lastModified: Mon, 17 Apr 2023 13:39:39 GMT
+  size: 392055859
+fashionbert_small:
+- key: fashionbert_small/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:39:47 GMT
+  size: 714
+- key: fashionbert_small/pytorch_model.th
+  lastModified: Mon, 17 Apr 2023 13:39:50 GMT
+  size: 494876839
+fashionproduct_base:
+- key: fashionproduct_base/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:40:00 GMT
+  size: 542
+- key: fashionproduct_base/pytorch_model.th
+  lastModified: Mon, 17 Apr 2023 13:40:01 GMT
+  size: 389250849
+fashionproduct_small:
+- key: fashionproduct_small/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:40:07 GMT
+  size: 555
+- key: fashionproduct_small/pytorch_model.th
+  lastModified: Mon, 17 Apr 2023 13:40:08 GMT
+  size: 264009241
+fashionproduct_xl_general_v1:
+- key: fashionproduct_xl_general_v1/config.yaml
+  lastModified: Mon, 17 Apr 2023 12:48:59 GMT
+  size: 518
+- key: fashionproduct_xl_general_v1/pytorch_model.th
+  lastModified: Mon, 17 Apr 2023 12:49:02 GMT
+  size: 824634499
+fashionproduct_xl_hr_v1:
+- key: fashionproduct_xl_hr_v1/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:40:12 GMT
+  size: 518
+- key: fashionproduct_xl_hr_v1/pytorch_model.th
+  lastModified: Mon, 17 Apr 2023 13:40:16 GMT
+  size: 876294273
+fashionvtp_base:
+- key: fashionvtp_base/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:40:31 GMT
+  size: 464
+- key: fashionvtp_base/pytorch_model.pth
+  lastModified: Mon, 17 Apr 2023 13:40:38 GMT
+  size: 1591407969
+fashionvtp_base_c:
+- key: fashionvtp_base_c/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:40:57 GMT
+  size: 464
+- key: fashionvtp_base_c/pytorch_model.pth
+  lastModified: Mon, 17 Apr 2023 13:41:03 GMT
+  size: 1591407969
+fashionvtp_base_s:
+- key: fashionvtp_base_s/config.yaml
+  lastModified: Mon, 17 Apr 2023 13:41:24 GMT
+  size: 464
+- key: fashionvtp_base_s/pytorch_model.pth
+  lastModified: Mon, 17 Apr 2023 13:41:30 GMT
+  size: 1591407969
+fashionxlm_base:
+- key: fashionxlm_base/config.json
+  lastModified: Mon, 17 Apr 2023 13:41:52 GMT
+  size: 558
+- key: fashionxlm_base/pytorch_model.bin
+  lastModified: Mon, 17 Apr 2023 13:41:56 GMT
+  size: 1130514063
+- key: fashionxlm_base/spm.model
+  lastModified: Mon, 17 Apr 2023 13:42:15 GMT
+  size: 4305025
+- key: fashionxlm_base/tokenizer_config.json
+  lastModified: Mon, 17 Apr 2023 13:42:16 GMT
+  size: 52
+fashionxlm_moe_base:
+- key: fashionxlm_moe_base/config.json
+  lastModified: Mon, 17 Apr 2023 13:42:16 GMT
+  size: 562
+- key: fashionxlm_moe_base/pytorch_model.bin
+  lastModified: Mon, 17 Apr 2023 13:42:23 GMT
+  size: 1730311227
+- key: fashionxlm_moe_base/spm.model
+  lastModified: Mon, 17 Apr 2023 13:42:49 GMT
+  size: 4305025
+- key: fashionxlm_moe_base/tokenizer_config.json
+  lastModified: Mon, 17 Apr 2023 13:42:50 GMT
+  size: 52
+xlmr_base:
+- key: xlmr_base/config.json
+  lastModified: Mon, 17 Apr 2023 13:42:50 GMT
+  size: 607
+- key: xlmr_base/pytorch_model.bin
+  lastModified: Mon, 17 Apr 2023 13:42:55 GMT
+  size: 1113286373
+- key: xlmr_base/sentencepiece.bpe.model
+  lastModified: Mon, 17 Apr 2023 13:43:09 GMT
+  size: 5069051
+- key: xlmr_base/tokenizer.json
+  lastModified: Mon, 17 Apr 2023 13:43:09 GMT
+  size: 9096718

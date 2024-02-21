@@ -1,0 +1,49 @@
+{
+    "model": {
+        "type": "bert_bare",
+        "vocab_size": 280001,
+        "embedding_dim": 256,
+        "dim": 512,
+        "dim_ff": 2048,
+        "initializer_range": 0.02,
+        "layer_norm_eps": 1e-6,
+        "act": "gelu",
+        "n_segments": 0,
+        "max_len": 512,
+        "n_heads": 8,
+        "n_layers": 12,
+        "p_drop_attn": 0.1,
+        "p_drop_hidden": 0.1,
+        "padding_index": 0,
+        "ignore_index": -100,
+	"layernorm_type": "default",
+        "layernorm_fp16": false,
+        "extra_transformer_config": {
+            "layernorm_fp16": false,
+            "dropout_in_ffn": false
+        },
+	"pool": false
+    },
+    "pipeline": {
+        "type": "bert-s1",
+        "cutter": {
+            "location": "/opt/tiger/libcut_model_ml_20201229",
+            "cut_type": "CRF_LARGE",
+            "cut_level": "COARSE"
+        },
+        "tokenizer": {
+            "type": "sp",
+            "resource_type": "model",
+	    "norm_form": "nfkc",
+	    "vocab": "./sp.model"
+        },
+        "vocab": "./vocab.txt",
+        "special_tokens": {
+            "unk": "<unk>",
+            "pad": "<pad>",
+            "cls": "<s>",
+            "sep": "</s>"
+        },
+        "max_len": 256
+    }
+}

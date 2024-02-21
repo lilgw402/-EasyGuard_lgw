@@ -1,0 +1,112 @@
+# all available pretrained models
+# server: server name
+# url_or_path: remote url
+# type: model name in `easyguard.modelzoo.modles`
+# description: a short introduction to the pretrained model
+# region: CN [available in China], VA [available overseas], CN/VA [available both]
+# available server urls: hdfs://haruna/home/byte_ecom_govern/easyguard/models [China]
+deberta_base_6l:
+  server: hdfs/tos
+  type: deberta
+fashion-deberta:
+  server: hdfs/tos
+  type: deberta
+  description: CCR + ASR 各1亿 MLM
+fashion-deberta-asr:
+  server: hdfs/tos
+  type: deberta
+  description: 风险预测task, 6层deberta
+fashion-deberta-asr-small:
+  server: hdfs/tos
+  type: deberta
+  description: 风险预测task, 3层deberta
+fashion-deberta-ccr-order:
+  server: hdfs/tos
+  type: deberta
+  description: 订单型 + VOC
+fashionxlm-base:
+  server: hdfs/tos
+  type: fashionxlm
+fashionxlm-moe-base:
+  server: hdfs/tos
+  type: fashionxlm_moe
+fashionxlm-softmoe-base:
+  server: hdfs/tos
+  type: fashionxlm_moe
+  description: soft-moe for CCR
+xlmr-base:
+  server: hdfs/tos
+  type: xlmr
+falbert-no-weights:
+  server: hdfs/tos
+  type: falbert
+  description: no pretrained weights
+bert-base-uncased:
+  server: hdfs/tos
+  type: bert
+facebook/bart-large:
+  type: bart
+google/vit-base-patch16-224:
+  type: vit
+openai/clip-vit-base-patch32:
+  type: clip
+fashion-deberta-ner:
+  server: hdfs/tos
+  type: deberta_erlangshen
+  description: 短视频+直播ASR,2亿,MLM(卖点词entity mask)
+fashion-swin-base-224-fashionvtp:
+  type: fashion_swin
+  server: hdfs/tos
+  description: fashionvtp的多模态视觉backbone
+fashion-universal-vit-base-224:
+  type: fashion_universal
+  server: hdfs/tos
+  description: fashion universal image encoding
+fashion-universal-product-vit-base-224:
+  type: fashion_universal
+  server: hdfs/tos
+  description: fashion universal product encoding
+fashionbert-base:
+  type: fashionbert
+  server: hdfs/tos
+  description: 商品侧多模态表征模型fashionbert
+fashionbert-small:
+  type: fashionbert
+  server: hdfs/tos
+  description: fashionbert的小模型版本,文本3层transformer,图片Swin-small
+fashionproduct-base:
+  type: fashionproduct
+  server: hdfs/tos
+  description: 多图多文本表征模型fashionproduct
+fashionproduct-small:
+  type: fashionproduct
+  server: hdfs/tos
+  description: fashionproduct的小模型版本,文本3层deberta,图片Swin-small
+fashionvtp-base-c:
+  type: fashionvtp
+  server: hdfs/tos
+  description: 视频多模态预训练表征模型fashionvtp(new 1e continue ptrain)
+fashionvtp-base:
+  type: fashionvtp
+  server: hdfs/tos
+  description: 视频多模态预训练表征模型fashionvtp(1e)
+fashionvtp-base-s:
+  type: fashionvtp
+  server: hdfs/tos
+  description: 视频多模态预训练表征模型fashionvtp(1000w)
+fashionproduct-xl-general-v1:
+  type: fashionproduct_xl
+  server: hdfs/tos
+  description: 多语言商品图文表征模型fashionproduct-xl，目前支持en、th、id、vn、my
+fashionproduct-xl-hr-v1:
+  type: fashionproduct_xl
+  server: hdfs/tos
+  description: 侧重于高危类目的多语言商品图文表征模型fashionproduct-xl，目前支持en、th、id、vn、my
+fashionproduct-xl-v2:
+  type: fashionproduct_xl
+  server: hdfs/tos
+  description: v2版本的多语言上文图文表征模型fashionproduct-xl，目前支持en、th、id、vn、my
+eva_vit_giant:
+  type: eva_vit_giant
+  server: hdfs/tos
+  description: v2版本的多语言上文图文表征模型fashionproduct-xl，目前支持en、th、id、vn、my

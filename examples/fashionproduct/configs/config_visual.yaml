@@ -1,0 +1,5 @@
+img_size: 224
+output_dim: 512
+embed_dim: 128
+depths: [2, 2, 18, 2]
+num_heads: [4, 8, 16, 32]

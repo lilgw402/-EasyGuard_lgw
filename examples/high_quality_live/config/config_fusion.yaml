@@ -1,0 +1,13 @@
+### transformer
+name: transformer
+hidden_size: 512
+num_layers: 6
+embd_pdrop: 0.1
+category_logits_level1: 3
+category_logits_level2: 60
+
+### concat
+# name: concat
+# hidden_size: 512
+# embd_pdrop: 0.1
+# category_logits_level1: 3

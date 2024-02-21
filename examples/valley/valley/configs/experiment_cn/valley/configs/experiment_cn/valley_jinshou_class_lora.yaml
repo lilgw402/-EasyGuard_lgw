@@ -1,0 +1,49 @@
+deepspeed: valley/configs/deepspeed/config_zero2.json
+model_class: valley-video
+model_name_or_path: /mnt/bn/yangmin-priv-fashionmm/pretrained/chinese_valley_belle7b   # 改成自己的预训练权重所在路径
+video_data_path: /mnt/bn/yangmin-priv-fashionmm/projects/zhaoziwang/data/jinshou_data/demodata7.json   # 改成自己的数据所在路径, json格式可以参考前面的
+# video_folder: /mnt/bn/yangmin-priv-fashionmm/projects/zhaoziwang/data/jinshou_data/
+output_dir: /mnt/bn/yangmin-priv-fashionmm/Checkpoints/valley_product/valley-7b-jinshou-class-lora-test   # 改成自己的ckpt要存到的路径
+# data_path: /mnt/bn/yangmin-priv-fashionmm/wangzhen/data/valley/llava1.5_513k_product_70k_redirect_6k_single.json
+# image_folder: /mnt/bn/yangmin-priv-fashionmm/projects/zhaoziwang/data/videochat/LLaVA-CC3M-Pretrain-595K/image_new/
+# experiment name
+project_name: jinshou_debug   # wandb中的project_name，可以改
+run_name: jinshou_test   # wandb中的run_name，可以改
+# english or chinese, default is english
+language: chinese
+is_fashion_data: True
+vision_tower: /mnt/bn/yangmin-priv-fashionmm/pretrained/chinese-clip-vit-large-patch14/
+version: "v0"
+prompt_version: "jinshou_cot"   # 改成自己的prompt，如需新增，请在conversations.py里添加
+only_mask_system: False
+mm_vision_select_feature: 'cls_patch'
+mm_vision_select_layer: -2
+mm_use_im_start_end: True
+mm_use_im_patch_token: False
+mm_projector_type: linear
+# pool_out_size: 8
+tune_mm_mlp_adapter: True
+freeze_backbone: True   # 选择是否要训backbone
+group_by_modality_length: True
+bf16: False
+fp16: True
+lora_enable: False   # 选择是否要用lora
+num_train_epochs: 3
+per_device_train_batch_size: 8
+per_device_eval_batch_size: 4
+gradient_accumulation_steps: 1
+evaluation_strategy: "no"
+save_strategy: "steps"
+lora_save_strategy: "no"
+save_steps: 4600
+learning_rate: 1e-5
+weight_decay: 0.
+warmup_ratio: 0.00
+lr_scheduler_type: cosine
+logging_steps: 1
+tf32: False
+model_max_length: 2048
+gradient_checkpointing: True
+dataloader_num_workers: 4
+lazy_preprocess: True
+report_to: wandb

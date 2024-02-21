@@ -1,0 +1,105 @@
+trainer:
+  default_root_dir: null
+  default_hdfs_dir: null
+  logger: true
+  log_every_n_steps: 100
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: true
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: {}
+  precision: fp16
+  max_epochs: 2
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: 100
+  limit_test_batches: null
+  sync_batchnorm: true
+  sync_fit_metrics: null
+  val_check_interval: 500
+  accumulate_grad_batches: null
+  gradient_clip_val: 2.0
+  seed: null
+  summarize_model_depth: 2
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: true
+  checkpoint_monitor: loss
+  checkpoint_mode: min
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: null
+  experiment_name: null
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+  strategy: ddp
+  enable_qat: false
+  qat_kwargs: {}
+  optimizer_kwargs:
+    optimizer:
+      type: torch.optim.AdamW
+      params:
+        lr: 0.0001
+        betas:
+        - 0.9
+        - 0.999
+        eps: 1.0e-06
+        weight_decay: 0.01
+        correct_bias: true
+        correct_bias_eps: false
+        bias_correction: true
+        adam_w_mode: true
+        amsgrad: false
+        set_grad_none: true
+        momentum: 0.0
+        nesterov: false
+    scheduler:
+      type: torch.optim.lr_scheduler.LinearLR
+      total_steps_param_name: total_iters
+      warmup_steps_param_name: num_warmup_steps
+      params:
+        warmup_step_rate: 0.005
+        start_factor: 0.3333333333333333
+        end_factor: 1.0
+        num_cycles: 0.5
+        lr_end: 1.0e-07
+        power: 1.0
+  grad_norm_layers: []
+model:
+  config_visual: ./examples/fashionproduct/configs/config_visual.yaml
+  config_fusion: ./examples/fashionproduct/configs/config_fusion.yaml
+  learning_rate: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  weight_decay: 0.02
+data:
+  train_batch_size: 8
+  val_batch_size: 8
+  paths: hdfs://haruna/home/byte_ecom_govern/user/liuyuhang/pretrain/product_pretrain_train_url
+  data_size: 64000000
+  val_step: 20
+  num_workers: 24
+  max_len: 128
+  pretrained_model_dir: hdfs://haruna/home/byte_ecom_govern/user/yangzheming/asr_model/zh_deberta_base_l6_emd_20210720
+  local_pretrained_model_dir_prefix: /opt/tiger/deberta/
+  cutter_enable: false
+  cutter_resource_dir: hdfs://haruna/home/byte_ecom_govern/user/yangzheming/asr_model/libcut_data_zh_20200827fix2/
+  local_cutter_dir_prefix: /opt/tiger/liuyuhang/cutter/
+  category_path: hdfs://haruna/home/byte_ecom_govern/user/liuyuhang/pretrain/category_dict_pt.json
+  ner_task_dict: hdfs://haruna/home/byte_ecom_govern/user/liuyuhang/pretrain/ner_format_statistics/ner_task_dict.json
+  ner_tasks:
+  - 商品
+  - 颜色
+  - 风格
+  - 材质
+  - 样式
+  max_main: 3
+  max_desc: 5
+  max_sku: 3
+log_level: INFO

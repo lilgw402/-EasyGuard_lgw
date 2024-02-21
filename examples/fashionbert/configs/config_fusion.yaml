@@ -1,0 +1,7 @@
+hidden_size: 512
+num_layers: 6
+embd_pdrop: 0.1
+category_logits_level1: 127
+category_logits_level2: 1663
+init_tau: 0.07
+tau_clamp: 4.6051

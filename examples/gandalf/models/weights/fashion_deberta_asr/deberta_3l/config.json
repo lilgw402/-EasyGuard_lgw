@@ -1,0 +1,21 @@
+{
+    "model_name": "deberta_base_6l",
+    "pretrained_model_path":"./models/weights/fashion_deberta_asr/deberta_3l/epoch7.ckpt",
+    "source":"titan",
+    "mode":"pool",
+    "hidden_dropout_prob": 0.1,
+    "_name_or_path": "fashion-deberta-asr-v2",
+    "hidden_size": 768,
+    "model_type": "deberta",
+    "num_attention_heads": 12,
+    "num_hidden_layers": 3,
+    "pad_token_id": 0,
+    "pooler_fc_size": 768,
+    "pooler_num_attention_heads": 12,
+    "pooler_num_fc_layers": 3,
+    "pooler_size_per_head": 128,
+    "pooler_type": "first_token_transform",
+    "position_embedding_type": "absolute",
+    "type_vocab_size": 2,
+    "use_cache": true
+  }

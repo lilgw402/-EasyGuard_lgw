@@ -1,0 +1,1 @@
+byted-cruise==0.7.0

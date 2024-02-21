@@ -1,0 +1,6 @@
+easydict
+prettytable
+progressbar
+timm==0.9.7
+transformers==4.33.2
+accelerate==0.23.0

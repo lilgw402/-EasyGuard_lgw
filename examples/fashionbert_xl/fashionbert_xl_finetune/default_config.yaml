@@ -1,0 +1,99 @@
+trainer:
+  default_root_dir: null
+  default_hdfs_dir: hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0828_kg
+  logger: true
+  log_every_n_steps: 100
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: true
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: { }
+  precision: 16
+  max_epochs: 2
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: 256
+  limit_test_batches: null
+  sync_batchnorm: false
+  sync_fit_metrics: null
+  val_check_interval: [ 2500, 1.0 ]
+  accumulate_grad_batches: null
+  gradient_clip_val: null
+  seed: 137
+  summarize_model_depth: 2
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: 10
+  checkpoint_monitor: val_loss
+  checkpoint_mode: min
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: fbxl_ft_tts_kg
+  experiment_name: continual
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+  strategy: ddp
+  enable_qat: false
+  qat_kwargs: { }
+  grad_norm_layers: [ ]
+model:
+#  backbone: /mnt/bn/fashionproductxl/weights/fashionbert_base_local
+  class_num: 1900
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  lr_schedule: linear
+  warmup_steps_factor: 0.2
+  eps: 1.0e-08
+  hidden_dim: 768
+  head_num: 5
+  use_multihead: false
+  embd_pdrop: 0.1
+  optim: AdamW
+  low_lr_prefix: # [ ]
+    - text.
+    - visual.
+#    - fuse.
+  freeze_prefix: [ ]
+#    - text.
+#    - visual.
+#    - fuse.
+  load_pretrained: hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0827_tts_kg/version_3228298/checkpoints/epoch=0-step=30000-val_loss=1.304.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0812_tmall/version_3178806/checkpoints/epoch=10-step=277500-val_loss=3.342.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0806_goldrush_ptm/version_3125334/checkpoints/epoch=1-step=300000-val_loss=0.630.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0701_aam/version_2949705/checkpoints/epoch=3-step=90624_success.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0708_ft_tts/version_2984220/checkpoints/init4mh.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0705_finetune/version_2968114/checkpoints/epoch=2-step=138000-val_loss=2.840.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fashionbert_xl/0701_aam/version_2949705/checkpoints/epoch=3-step=90624_success.ckpt
+  prefix_changes: [ ]
+#    - t_header->abandon_t
+#    - v_header->abandon_v
+#    - f_header->abandon_f
+#    - f_cls->abandon_fcls
+  download_files: # [ ]
+    - hdfs://harunava/home/byte_magellan_va/user/wangxian/weights/backbone/xlm-roberta-base-torch->/opt/tiger
+data:
+  train_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_samples/
+  # hdfs://harunava/home/byte_magellan_va/user/xuqi/data/multi_classfication_fex/tmall/train_translate_tmall_all_transform/
+  # /mnt/bn/fashionbertxl/tts_jsonl_b64/trainset
+  # /mnt/bn/fashionproductcache/train_jsonl_b64/cate_hr_merge
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_samples/
+  train_size: 17000000
+  val_files: hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_test_samples/
+  # hdfs://harunava/home/byte_magellan_va/user/xuqi/data/multi_classfication_fex/tmall/val_translate_tmall_all_transform/
+  # /mnt/bn/fashionbertxl/tts_jsonl_b64/valset
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_hrtest_slices
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/datasets/TTS_PTM/train_jsonl_b64/kg_test_samples/
+  val_size: 200000
+  train_batch_size: 16
+  val_batch_size: 16
+  num_workers: 4
+  text_len: 256
+  frame_len: 3
+  head_num: 5
+  download_files: # [ ]
+    - hdfs://harunava/home/byte_magellan_va/user/wangxian/weights/backbone/xlm-roberta-base-torch->/opt/tiger
+log_level: INFO

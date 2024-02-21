@@ -1,0 +1,82 @@
+trainer:
+  default_root_dir: null
+  default_hdfs_dir: hdfs://harunava/home/byte_magellan_va/user/wangxian/tmp/space_for_demo     # path to save ckpt
+  logger: true
+  log_every_n_steps: 100                  # log frequence
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: true
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: { }
+  precision: fp16
+  max_epochs: 5                           # train epoch
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: 128
+  limit_test_batches: null
+  sync_batchnorm: false
+  sync_fit_metrics: null
+  val_check_interval: [ 2000, 1.0 ]       # val frequence, [step(int), epoch(float)]
+  accumulate_grad_batches: null
+  gradient_clip_val: 1.0
+  seed: 42
+  summarize_model_depth: 3
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: 20                   # bool or int to set the max num of ckpt files
+  checkpoint_monitor: val_top1_acc        # delete ckpt based on monitor
+  checkpoint_mode: max                    # min monitor or max monitor, for example min for loss, max for acc or step
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: null                      # project_name on merlin platform
+  experiment_name: null                   # experiment_name for metric curve
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+  strategy: ddp
+  enable_qat: false
+  qat_kwargs: { }
+  grad_norm_layers: [ ]
+model:
+  backbone: fashionproduct-xl-v2
+  class_num: 47
+  hidden_dim: 768
+  optim: AdamW
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  lr_schedule: cosine
+  warmup_steps_factor: 0.2          # warmup_step = factor * one_epoch_step
+  low_lr_prefix: [ ]                # 训练时哪些层的学习率调低，目前是设为其他层的十分之一，可在model.py的configure_optimizers中修改
+#    - backbone.falbert
+  freeze_prefix: # [ ]              # 训练时冻住哪些层
+    - backbone.falbert.visual
+  head_num: 5                       # 分类投的个数，仅在use_multihead为true时生效
+  use_multihead: true               # 是否使用多分类头，如果不按国家区分建议设置为false
+  load_pretrained: null
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/weights/fashionproductxl/fashionproductxl_v2.ckpt
+  # hdfs://harunava/home/byte_magellan_va/user/wangxian/projects/fp_xl_ptm_v3/version_2756826/checkpoints/epoch=2-step=94000-val_loss=10.188.ckpt
+  prefix_changes: [ ]               # modify layer name in state_dict before loading weights
+#    - backbone.->backbone.falbert.
+  download_files: # [ ]
+    - hdfs://harunava/home/byte_magellan_va/user/wangxian/cache/libcut_model_ml_20201229->/opt/tiger
+    - hdfs://harunava/home/byte_magellan_va/user/wangxian/cache/m_albert_h512a8l12/vocab.txt->./examples/fashionproduct_xl/m_albert_h512a8l12
+    - hdfs://harunava/home/byte_magellan_va/user/wangxian/cache/m_albert_h512a8l12/sp.model->./examples/fashionproduct_xl/m_albert_h512a8l12
+data:
+  train_files: hdfs://harunava/home/byte_magellan_va/user/xuqi/data/feature_audit
+  train_size: 12000000
+  val_files: hdfs://harunava/home/byte_magellan_va/user/xuqi/data/feature_audit_val
+  val_size: 300000
+  train_batch_size: 32
+  val_batch_size: 16
+  num_workers: 2
+  text_len: 256
+  frame_len: 3                      # how many frames to use
+  head_num: 5
+  download_files: # [ ]
+    - hdfs://harunava/home/byte_magellan_va/user/wangxian/cache/libcut_model_ml_20201229->/opt/tiger
+    - hdfs://harunava/home/byte_magellan_va/user/wangxian/cache/m_albert_h512a8l12/vocab.txt->./examples/fashionproduct_xl/m_albert_h512a8l12/
+    - hdfs://harunava/home/byte_magellan_va/user/wangxian/cache/m_albert_h512a8l12/sp.model->./examples/fashionproduct_xl/m_albert_h512a8l12/
+log_level: INFO

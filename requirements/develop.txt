@@ -1,0 +1,17 @@
+# CICD相关的一些依赖项（主要和lint，tests，docs相关）
+
+# lint
+pre-commit==3.3.3
+pre-commit-hooks==4.4.0
+isort==5.8.0
+black==23.3.0
+flake8==6.0.0
+# tests
+pytest
+pytest-xdist
+pytest-pythonpath
+pytest-cov
+pytest-html
+pytest-repeat
+pytest-rerunfailures
+pytest-timeout

@@ -1,0 +1,62 @@
+{
+    "includes": "ptx.model.deberta",
+    "model": {
+        "type": "deberta-bare",
+        "vocab_size": 145608,
+        "dim": 768,
+        "dim_ff": 3072,
+        "n_segments": 2,
+        "p_drop_hidden": 0.1,
+        "p_drop_attn": 0.1,
+        "embedding_dropout": 0.1,
+        "n_heads": 16,
+        "n_layers": 6,
+        "initializer_range": 0.02,
+        "layer_norm_eps": 1e-6,
+        "embedding_dim": 256,
+        "pool": true,
+        "padding_index": 2,
+        "attention_clamp_inf": false,
+        "max_len": 512,
+        "abs_pos_embedding": true,
+        "ignore_index": -100,
+        "calc_mlm_accuracy": true,
+        "tie_embedding": true,
+        "use_emd": true,
+        "num_emd_groups": 1,
+        "emd_group_repeat": 1,
+        "max_relative_positions": 512,
+        "act": "gelu",
+        "layernorm_type": "default",
+        "layernorm_fp16": true,
+        "use_fast": false,
+        "head_layernorm_type": "default",
+        "omit_other_output": true,
+	"extra_da_transformer_config": {
+	    "mha_acts_unite_d01": false
+	}
+    },
+    "pipeline": {
+        "type": "bert-s1",
+        "cutter": {
+            "location": "/opt/tiger/libcut_data_zh_20200827fix2",
+            "cut_type": "CRF_LARGE",
+            "cut_level": "FINE"
+        },
+        "tokenizer": {
+            "type": "wp",
+            "vocab": "/opt/tiger/ckpt/zh_deberta_base_l6_emd_20210720/vocab.txt",
+            "piece_type": "bert",
+            "lower_case": false
+        },
+        "vocab": "/opt/tiger/ckpt/zh_deberta_base_l6_emd_20210720/vocab.txt",
+        "vocab_oov_buckets": 8192,
+        "special_tokens": {
+            "unk": "[UNK]",
+            "pad": "[PAD]",
+            "cls": "[CLS]",
+            "sep": "[SEP]"
+        },
+        "max_len": 256
+    }
+}

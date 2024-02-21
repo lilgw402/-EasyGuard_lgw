@@ -1,0 +1,61 @@
+trainer:
+  default_root_dir: /mnt/bd/yangzheming/cruise/cruise_logs
+  default_hdfs_dir: hdfs://haruna/home/byte_ecom_govern/user/yangzheming/chinese/common_model/trails/common_ft/asr_example/model_outputs
+  logger: true
+  log_every_n_steps: 50
+  benchmark: false
+  enable_speedmonitor: true
+  enable_versions: true
+  detect_anomaly: false
+  deterministic: false
+  accelerator: gpu
+  accelerator_kwargs: {}
+  precision: fp16
+  max_epochs: 2
+  max_steps: -1
+  limit_train_batches: null
+  limit_val_batches: null
+  limit_test_batches: null
+  sync_batchnorm: false
+  sync_fit_metrics: null
+  val_check_interval:
+  - 3000
+  - 1.0
+  accumulate_grad_batches: null
+  gradient_clip_val: null
+  seed: null
+  summarize_model_depth: 2
+  resume_ckpt_path: null
+  callbacks: null
+  enable_checkpoint: true
+  checkpoint_monitor: total_auc_score
+  checkpoint_mode: max
+  dataloader_timeout: -1
+  dataloader_retry_limit: 100
+  dataloader_retry_persistent_limit: 5
+  find_unused_parameters: true
+  project_name: null
+  experiment_name: null
+  enable_trace: false
+  reload_dataloaders_every_n_epochs: -1
+model:
+  learning_rate: 2.0e-05
+  pretrain_model_name: fashion-deberta-asr
+  cls_class_num: 2
+  sce_loss_enable: false
+  auc_score_enable: true
+  hidden_size: 768
+data:
+  train_batch_size: 32
+  val_batch_size: 32
+  train_paths: hdfs://haruna/home/byte_ecom_govern/user/yangzheming/chinese/common_model/benchmark/asr_risk_predict/train/*.jsonl
+  val_paths: hdfs://haruna/home/byte_ecom_govern/user/yangzheming/chinese/common_model/benchmark/asr_risk_predict/valid/*.jsonl
+  data_size: -1
+  val_step: 0
+  text_label_field: label
+  text_field: text
+  num_workers: 1
+  context_length: 512
+  vocab_file_path: hdfs://haruna/home/byte_ecom_govern/user/yangzheming/asr_model/zh_deberta_base_l6_emd_20210720/vocab.txt
+  pretrain_model_name: fashion-deberta-asr
+log_level: INFO

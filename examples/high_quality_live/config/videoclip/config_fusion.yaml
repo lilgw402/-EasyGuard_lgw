@@ -1,0 +1,7 @@
+name: two_stream
+input_dim: 768
+out_dim: 128
+class_num: 3
+
+# name: single_stream
+# class_num: 3

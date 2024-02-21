@@ -1,0 +1,103 @@
+# all available pretrained models
+# server: server name
+# url_or_path: remote url
+# type: model name in `easyguard.modelzoo.modles`
+# description: a short introduction to the pretrained model
+# region: CN [available in China], VA [available overseas], CN/VA [available both]
+# available server urls: hdfs://haruna/home/byte_ecom_govern/easyguard/models [China]
+deberta_base_6l:
+  server: hdfs
+  type: deberta
+  region: CN
+fashion-deberta:
+  server: hdfs
+  type: deberta
+  description: CCR + ASR 各1亿 MLM
+  region: CN
+fashion-deberta-asr:
+  server: hdfs
+  type: deberta
+  description: 风险预测task, 6层deberta
+  region: CN
+fashion-deberta-asr-small:
+  server: hdfs
+  type: deberta
+  description: 风险预测task, 3层deberta
+  region: CN
+fashion-deberta-ccr-order:
+  server: hdfs
+  type: deberta
+  description: 订单型 + VOC
+  region: CN
+fashionxlm-base:
+  server: hdfs
+  type: fashionxlm
+  region: CN
+fashionxlm-moe-base:
+  server: hdfs
+  type: fashionxlm_moe
+  region: CN
+xlmr-base:
+  server: hdfs
+  type: xlmr
+  region: CN
+falbert-no-weights:
+  server: hdfs
+  type: falbert
+  region: CN
+  description: no pretrained weights
+bert-base-uncased:
+  server: hdfs
+  type: bert
+  region: CN
+facebook/bart-large:
+  type: bart
+google/vit-base-patch16-224:
+  type: vit
+openai/clip-vit-base-patch32:
+  type: clip
+fashion-deberta-ner:
+  server: hdfs
+  type: deberta_erlangshen
+  description: 短视频+直播ASR,2亿,MLM(卖点词entity mask)
+  region: CN
+fashion-swin-base-224-fashionvtp:
+  type: fashion_swin
+  server: hdfs
+  region: CN
+  description: fashionvtp的多模态视觉backbone
+fashionbert-base:
+  type: fashionbert
+  server: hdfs
+  region: CN
+  description: 商品侧多模态表征模型fashionbert
+fashionbert-small:
+  type: fashionbert
+  server: hdfs
+  region: CN
+  description: fashionbert的小模型版本,文本3层transformer,图片Swin-small
+fashionproduct-base:
+  type: fashionproduct
+  server: hdfs
+  region: CN
+  description: 多图多文本表征模型fashionproduct
+fashionproduct-small:
+  type: fashionproduct
+  server: hdfs
+  region: CN
+  description: fashionproduct的小模型版本,文本3层deberta,图片Swin-small
+fashionvtp-base-c:
+  type: fashionvtp
+  server: hdfs
+  region: CN
+  description: 视频多模态预训练表征模型fashionvtp(new 1e continue ptrain)
+fashionvtp-base:
+  type: fashionvtp
+  server: hdfs
+  region: CN
+  description: 视频多模态预训练表征模型fashionvtp(1e)
+fashionvtp-base-s:
+  type: fashionvtp
+  server: hdfs
+  region: CN
+  description: 视频多模态预训练表征模型fashionvtp(1000w)

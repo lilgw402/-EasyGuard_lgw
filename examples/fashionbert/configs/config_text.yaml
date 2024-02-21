@@ -1,0 +1,15 @@
+num_hidden_layers: 6
+num_attention_heads: 12
+hidden_size: 768
+intermediate_size: 3072
+embedding_size: 256
+vocab_size: 145608
+max_position_embeddings: 512
+type_vocab_size: 16
+project_embedding_first: False
+with_pooler: True
+initializer_range: 0.02
+layernorm_eps: 1.0e-6
+hidden_dropout_prob: 0.1
+frozen_layers: -1
+word_embedding_frozen: False

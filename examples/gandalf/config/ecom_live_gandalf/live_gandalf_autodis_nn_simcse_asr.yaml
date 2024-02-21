@@ -1,0 +1,160 @@
+data:
+  dataset:
+    input_dir: hdfs://haruna/user/sham_check/ecom_live_gandalf/augustus/NN/dataset/ecom_live_gandalf_parquet_neg_high_precision_extractor_1/train
+    val_input_dir: hdfs://haruna/user/sham_check/ecom_live_gandalf/augustus/NN/dataset/ecom_live_gandalf_parquet_neg_high_precision_extractor_1/validation
+    test_input_dir: hdfs://haruna/user/sham_check/ecom_live_gandalf/augustus/NN/dataset/ecom_live_gandalf_parquet_neg_high_precision_extractor_1/test
+    train_folder: 20221229|2022123[0-1]|2023010[1-9]|2023011[0-1]
+    val_folder: 2022121[5-9]|2022122[0-8]
+    test_folder: 2022123[0-1]
+  feature_provider:  
+    feature_num: 150
+    tokenizer_path: ./models/weights/fashion_deberta_asr/deberta_3l
+    max_length: 512
+    embedding_conf:
+      author_embedding: 128
+      universal_embedding: 256
+    feature_norm_info:
+      '0':
+        - 0.0
+        - 16.0
+      '1':
+        - 0.0
+        - 5207.0
+      '109':
+        - 0.0
+        - 5372.0
+      '11':
+        - 0.0
+        - 28971.0
+      '114':
+        - 0.0
+        - 2949.0
+      '127':
+        - -6.0
+        - 1.0
+      '128':
+        - -6.0
+        - 1.0
+      '130':
+        - 0.0
+        - 32.0
+      '16':
+        - 0.0
+        - 1000.0
+      '17':
+        - 0.0
+        - 440.0
+      '18':
+        - 0.0
+        - 2.0
+      '2':
+        - -550.0
+        - 1200.0
+      '21':
+        - 0.0
+        - 108.0
+      '22':
+        - 0.0
+        - 1620.0
+      '23':
+        - 0.0
+        - 7327.0
+      '3':
+        - 0.0
+        - 2.0
+      '6':
+        - 0.0
+        - 10.0
+      '7':
+        - 0.0
+        - 253.0
+      '8':
+        - 0.0
+        - 100.0
+      '93':
+        - 0.0
+        - 4.0
+      '94':
+        - 0.0
+        - 5.0
+      '96':
+        - -1.0
+        - 1.0
+    slot_mask:
+      - 140
+      - 141
+      - 142
+      - 143
+      - 144
+      - 145
+      - 146
+      - 147
+      - 148
+      - 149
+    type: EcomLiveGandalfParquetAutoDisFeatureProvider
+    use_high_precision: false
+    filtered_tags: null
+  data_factory:
+    type: ParquetDataFactory
+    train_max_iteration: -1
+    val_max_iteration: -1
+    test_max_iteration: -1
+    batch_size: 32
+    batch_size_val: -1
+    num_parallel_reads: 4
+    num_workers: 6
+  type: EcomLiveGandalfParquetAutoDisCruiseDataModule
+model:
+  type: EcomLiveGandalfAutoDisNNAsrSimcseCruiseModel
+  features:
+    feature_num: 150
+    bucket_dim: 128
+    bucket_num: 8
+    bucket_output_size: 1024
+    slot_mask:
+      - 140
+      - 141
+      - 142
+      - 143
+      - 144
+      - 145
+      - 146
+      - 147
+      - 148
+      - 149
+  asr_encoder:
+    encoder_name: /mnt/bn/renaisance/mlx/models/pretrain/fashion_deberta_asr_small
+    emb_dropout_prob: 0.3
+    emb_mode: pool
+    embedding_dim: 768
+    encoder_freeze_layer: null
+    num_attention_heads: 3
+    num_hidden_layers: 3
+  embedding:
+    author_embedding_dim: 128
+  kwargs:
+    enable_asr_embedding: 1
+    enable_author_embedding: 0
+    dropout: 0.3
+    optimizer:
+      optimizer_name: AdamW
+      learning_rate: 0.00001
+    lr_scheduler:
+      scheduler_name: LinearLrSchedulerWithWarmUp
+      last_epoch: -1
+      total_iters: 5
+      start_factor: 1
+      end_factor: 0.2
+      warmup_steps: 1000
+trainer:
+  default_root_dir: /mnt/bn/renaisance/mlx/data/cruise_logs/gandalf/exps/version_2
+  # default_hdfs_dir: hdfs://haruna/user/sham_check/ecom_live_gandalf/augustus/NN/exps/version_2
+  enable_versions: false
+  logger: null
+  max_epochs: 25
+  find_unused_parameters: true
+  limit_val_batches: 300
+  limit_train_batches: -1
+  val_check_interval: 300
+  project_name: gandalf
+  experiment_name: augutus/auto_dis_nn_asr_simcse
